@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'responsive_safe_area.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,14 +9,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        // Builder for the ability to access the MediaQuery through an InheritedWidget
-        body: Builder(
-          builder: (context) {
+        body: ResponsiveSafeArea(
+          builder: (context, size) {
             return Container(
               decoration: BoxDecoration(color: Colors.green.shade200),
               alignment: Alignment.topCenter,
-              // Using media query is fine now, we're really dealing with the whole screen
-              height: MediaQuery.of(context).size.height / 2,
+              height: size.height / 2,
               child: Column(
                 children: <Widget>[
                   Text(
